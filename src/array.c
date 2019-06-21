@@ -8,11 +8,19 @@ int A[100000];
 int main(){
   int i, lb, ub;
   scanf("%d%d", &n, &k);
+    lb = 0;
+    ub = n;
   for(i = 0; i < n; i++){
     scanf("%d", &A[i]);
+      int m = (lb + ub) / 2;
+      if (A[i] >= k){
+          ub = m;
+      }
+      else {
+          lb = m;
+      }
+      }
   }
-
-
-
-  return 0;
+printf("%d", ub);
+return 0;
 }
