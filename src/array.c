@@ -1,26 +1,30 @@
 #include <stdio.h>
+int main() {
 
-int n;
-int k;
-int A[100000];
+	int n;
+	int k;
+	int A[100000];
+//	int m;
 
-
-int main(){
   int i, lb, ub;
   scanf("%d%d", &n, &k);
-    lb = 0;
-    ub = n;
   for(i = 0; i < n; i++){
     scanf("%d", &A[i]);
-      int m = (lb + ub) / 2;
-      if (A[i] >= k){
-          ub = m;
-      }
-      else {
-          lb = m;
-      }
-      }
   }
-printf("%d", ub);
-return 0;
+  lb = 0;
+  ub = n-1;
+  if (A[ub] < k)
+	  printf("%d", n);
+  else
+  {
+	  while (ub - lb > 1) {
+		  int m = (lb + ub) / 2;
+		  if (A[m] < k)
+			  lb = m;
+		  else
+			  ub = m;
+	  }
+	  printf("%d", ub);
+  }
+  return 0;
 }
