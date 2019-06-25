@@ -12,6 +12,27 @@ int main(){
     scanf("%d", &A[i]);
   }
 
+  int max = 0;
+  for (i = 0; i < n; i++) {
+	  if (A[i] > max)
+		  max = A[i];
+  }
+
+  lb = 0;
+  ub = max;
+
+  while (ub - lb > 1) {
+	  int m = (lb + ub) / 2;
+	  int i;
+	  int d = 0;
+	  for (i = 0; i < n; i++) {
+		  d = d + A[i] / m;
+	  }
+	  if (d >= k)
+		  lb = m;
+	  else ub = m;
+  }
+  printf("%d\n", lb);
 
   return 0;
 }
