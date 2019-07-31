@@ -4,6 +4,16 @@ int n;
 int k;
 int A[100000];
 
+unsigned int p(int m){
+  int current_amount = 0;
+  int i;
+
+  for(i=0;i<n;i++){
+    current_amount += A[i] / m;
+  }
+
+  return(current_amount < k);
+}
 
 int main(){
   int i, lb, ub;
@@ -12,26 +22,16 @@ int main(){
     scanf("%d", &A[i]);
   }
 
-  int max = 0;
-  for (i = 0; i < n; i++) {
-	  if (A[i] > max)
-		  max = A[i];
-  }
-
   lb = 0;
-  ub = max;
+  ub = 1000000001;
 
   while (ub - lb > 1) {
 	  int m = (lb + ub) / 2;
-	  int i;
-	  int d = 0;
-	  for (i = 0; i < n; i++) {
-		  d = d + A[i] / m;
-	  }
-	  if (d >= k)
-		  lb = m;
-	  else ub = m;
+	  if (p(m))
+		  ub = m;
+	  else lb = m;
   }
+  
   printf("%d\n", lb);
 
   return 0;

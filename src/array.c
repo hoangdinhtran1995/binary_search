@@ -11,8 +11,8 @@ int main() {
     scanf("%d", &A[i]);
   }
 
-  lb = 0;
-  ub = n-1;
+  lb = -1;
+  ub = n;
 
   if (A[ub] < k)
 	  printf("%d", n);
