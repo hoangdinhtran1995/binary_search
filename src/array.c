@@ -13,18 +13,15 @@ int main() {
 
   lb = -1;
   ub = n;
-
-  if (A[ub] < k)
-	  printf("%d", n);
-  else
-  {
-	  while (ub - lb > 1) {
-		  int m = (lb + ub) / 2;
-		  if (A[m] < k)
-			  lb = m;
-		  else
-			  ub = m;
+  
+  while (ub - lb > 1) {
+	  int m = (lb + ub) / 2;
+	  if (A[m] < k)
+		  lb = m;
+	  else
+		  ub = m;
 	  }
+		  
 	  printf("%d", ub);
   }
   return 0;
